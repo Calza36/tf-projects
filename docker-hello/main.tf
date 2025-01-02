@@ -10,13 +10,13 @@ terraform {
 
 provider "docker" {}
 
-resource "docker_image" "nginx" {
+resource "docker_image" "nginx_image" {
   name         = "nginx:alpine"
   keep_locally = false
 }
 
 resource "docker_container" "nginx_container" {
-  image = docker_image.nginx.image_id
+  image = docker_image.nginx_image.image_id // we aslo can use the name of the image like : docker_image.nginx.name (image_id)
   name  = var.container_name
 
   ports {
