@@ -1,0 +1,8 @@
+# Terraform stuff
+.terraform/              # This directory contains the Terraform state and should not be checked in
+*.tfstate                # This file contains the state of your infrastructure and should not be checked in because it can contain sensitive information
+*.tfstate.backup         // This file is a backup of the state file and should not be checked in
+.terraform.lock.hcl      // This file is used by Terraform to keep track of the lock on the state file. It should not be checked in because it can contain sensitive information like the DynamoDB table name used for locking the state file and the S3 bucket name used to store the state file and the lock file
+
+secrets.tfvars          // This file contains sensitive information and should not be checked in
+terraform.tfstate       // This file contains the state of your infrastructure and should not be checked in because it can contain sensitive information
