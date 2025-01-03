@@ -1,5 +1,5 @@
 resource "aws_vpc" "main" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = var.vpc_cidr // or "10.0.0.0/16"
   tags = {
     Name = "tf-basic-vpc"
   }
@@ -70,6 +70,10 @@ resource "aws_instance" "web_server" {
   instance_type        = var.instance_type
   subnet_id            = aws_subnet.public_subnet.id
   vpc_security_group_ids = [aws_security_group.web_sg.id]
+/*Also here we could add a  key_name = "mykey"   Refering to a Key Pair previously crerated so you can use it to login via SSH to that instanvce 
+
+like this: ssh -i ~/.ssh/mykey.pem ec2-user@<public_ip>
+*/
 
   tags = {
     Name = "tf-basic-ec2"
